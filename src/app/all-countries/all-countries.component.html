@@ -1,0 +1,31 @@
+<div class="fullpage">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <span class="title">Countries in {{region | firstCharCapital}}</span>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 card-container" *ngFor="let country of countries">
+        <a style="cursor : pointer;">
+          <div class="card h-100">
+            <img class="card-img-top" [src]="country.flag" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{country.name}}</h5>
+              <div class="card-text">
+                <p>
+                  <em>Capital</em> : {{country.capital}}</p>
+                <p>
+                  <em>Timezone</em> :
+                  <span *ngFor="let timezone of country.timezones; let i = last">{{timezone}} {{i ? "" : ","}} </span>
+                </p>
+                <p>
+                  <em>Currency</em> :
+                  <span *ngFor="let currency of country.currencies; let i = last">{{currency.name}} {{i ? "" : ","}} </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

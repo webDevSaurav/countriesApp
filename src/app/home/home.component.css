@@ -18,3 +18,31 @@
     font-size: 3rem;
     padding : 10px;
 }
+.on-small-screen{
+    display: none;
+}
+
+@media only screen and (max-width: 1076px) {
+    .map{
+        display : none;
+    }
+    .on-small-screen{
+        display: block;
+    }
+    .full-screen{
+        overflow: auto;
+    }
+    .region-block{
+        background: #A9A9A9;
+        margin : 20px 0px;
+        padding : 10px;
+        box-shadow: 2px 2px 8px #888888;
+    }
+}
+
+@media only screen and (max-width : 583px){
+    .title{
+        font-size : 2rem;
+    }
+}
+
