@@ -10,6 +10,7 @@ import { FirstCharCapitalPipe } from './first-char-capital.pipe';
 import { HttpServiceService } from './http-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CountryComponent } from './country/country.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -18,14 +19,17 @@ import { CountryComponent } from './country/country.component';
     HomeComponent,
     AllCountriesComponent,
     FirstCharCapitalPipe,
-    CountryComponent
+    CountryComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
       {"path" : "", component : HomeComponent, pathMatch : "full"},
-      {"path" : "allCountries/:region", component : AllCountriesComponent}
+      {"path" : "allCountries/:region", component : AllCountriesComponent},
+      {"path" : "allCountries/:code", component : CountryComponent},
+      {"path" : "country/:country", component : CountryComponent}
     ])
   ],
   providers: [HttpServiceService],

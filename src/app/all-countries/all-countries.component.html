@@ -1,30 +1,40 @@
 <div class="fullpage">
   <div class="container">
-    <div class="row d-flex justify-content-center">
-      <span class="title">Countries in {{region | firstCharCapital}}</span>
+    <div class="row d-flex justify-content-between" style="margin-top : 30px;">
+      <span style="cursor : pointer" (click)="goBack()">
+        <span class="title back">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i> Back</span>
+      </span>
+      <span>
+        <span class="title">{{titlePreText}} {{title | firstCharCapital}}</span>
+      </span>
+      <span>
+        <!-- Filter -->
+      </span>
     </div>
     <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-6 col-12 card-container" *ngFor="let country of countries">
-        <a style="cursor : pointer;">
-          <div class="card h-100">
-            <img class="card-img-top" [src]="country.flag" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{country.name}}</h5>
-              <div class="card-text">
-                <p>
-                  <em>Capital</em> : {{country.capital}}</p>
-                <p>
-                  <em>Timezone</em> :
-                  <span *ngFor="let timezone of country.timezones; let i = last">{{timezone}} {{i ? "" : ","}} </span>
-                </p>
-                <p>
-                  <em>Currency</em> :
-                  <span *ngFor="let currency of country.currencies; let i = last">{{currency.name}} {{i ? "" : ","}} </span>
-                </p>
-              </div>
+        <div class="card h-100">
+          <img class="card-img-top" [src]="country.flag" alt="Card image cap" style="height : 70px;">
+          <div class="card-body">
+            <h5 class="card-title">{{country.name}}</h5>
+            <div class="card-text">
+              <p>
+                <em>Capital</em> : {{country.capital}}</p>
+              <p>
+                <em>SubRegion</em> :
+                <span>{{country.subregion}}</span>
+              </p>
+              <p>
+                <em>Currency</em> :
+                <span *ngFor="let currency of country.currencies; let i = last"><a [routerLink] = "['/allCountries/' + country.region]" [queryParams]="{ 'currency' : currency.code, 'name' : currency.name}" >{{currency.name}} </a>{{i ? "" : ","}} </span>
+              </p>
             </div>
+            <p>
+                <button [routerLink]="['/country', country.name]" class="btn btn-primary btn-block">See More..</button>
+              </p>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </div>
